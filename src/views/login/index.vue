@@ -7,7 +7,7 @@
 
       <div class="form">
         <div class="title">Welcome Management System</div>
-        <el-form ref="formRef" class="form-wrap" :model="form" :rules="rules">
+        <el-form ref="formRef" :model="form" :rules="rules">
           <el-form-item label="账号" prop="userid">
             <el-input v-model="form.userid" />
           </el-form-item>
@@ -84,16 +84,23 @@ function submit() {
 }
 
 .title {
+  margin-bottom: 40px;
   color: var(--main-color);
   font-size: 16px;
   font-weight: bold;
 }
 
-.form-wrap {
-  margin-top: 40px;
-}
-
 .btn {
   width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+  .cover {
+    display: none;
+  }
+
+  .form {
+    padding: 40px 45px;
+  }
 }
 </style>
