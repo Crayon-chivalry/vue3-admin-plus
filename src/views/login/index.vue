@@ -23,14 +23,16 @@
 
 <script setup>
 import { reactive, ref } from "vue";
-import md5 from 'blueimp-md5'
-import { login } from '@/api/user'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
+const store = useStore()
+const router = useRouter()
 const formRef = ref(null)
 
 let form = reactive({
-  userid: "",
-  password: ""
+  userid: "admin",
+  password: "123456"
 });
 let rules = {
   userid: [
@@ -44,10 +46,10 @@ let rules = {
 function submit() {
   formRef.value.validate(async (valid, fields) => {
     if (valid) {
-      let _password = md5(form.password)
-      let data = await login(form.userid, _password)
-      console.log(data)
-      console.log(_password)
+      store.dispatch('user/login', form).then(() => {
+        console.log('111')
+        router.push('/')
+      }).catch(() => {})
     }
   })
 }

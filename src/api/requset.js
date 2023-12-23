@@ -30,9 +30,9 @@ export function request(config, loading = true) {
         message: res.data.msg,
         type: 'error',
       })
-      return
+    } else {
+      return res
     }
-    return res
   }, error => {
     // 对响应错误处理
     loadingInstance?.close()
