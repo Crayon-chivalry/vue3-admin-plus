@@ -47,7 +47,6 @@ function submit() {
   formRef.value.validate(async (valid, fields) => {
     if (valid) {
       store.dispatch('user/login', form).then(() => {
-        console.log('111')
         router.push('/')
       }).catch(() => {})
     }

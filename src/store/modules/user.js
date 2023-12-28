@@ -19,8 +19,7 @@ const actions = {
   async login({ commit }, form) {
     let _password = md5(form.password)
     let { data } = await login(form.userid, _password)
-    let { us, token } = data.data
-    commit('setUserid', us.userid)
+    let token = data.data
     commit('setToken', token)
   }
 }

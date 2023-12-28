@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import createPersistedState from "vuex-persistedstate"
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
 const modulesFiles = require.context('./modules', true, /\.js$/)
@@ -13,7 +14,14 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
   return modules
 }, {})
 
-
 export default createStore({
-  modules
+  modules,
+  // 持久化
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+      key: "store",
+      // plugins: [modules.user]
+    })
+  ]
 })
