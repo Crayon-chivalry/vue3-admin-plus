@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import createPersistedState from "vuex-persistedstate"
+import getters from './getters'
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
 const modulesFiles = require.context('./modules', true, /\.js$/)
@@ -16,6 +17,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 export default createStore({
   modules,
+  getters,
   // 持久化
   plugins: [
     createPersistedState({

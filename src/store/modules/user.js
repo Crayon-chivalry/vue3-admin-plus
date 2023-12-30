@@ -3,7 +3,8 @@ import md5 from 'blueimp-md5'
 
 const state = {
   userid: '',
-  token: ''
+  token: '',
+  roles: []
 }
 
 const mutations = {
@@ -12,6 +13,9 @@ const mutations = {
   },
   setToken(state, token) {
     state.token = token
+  },
+  setRoles(state, roles) {
+    state.roles = roles
   }
 }
 
@@ -21,6 +25,16 @@ const actions = {
     let { data } = await login(form.userid, _password)
     let token = data.data
     commit('setToken', token)
+  },
+  async getInfo({ commit }, form) {
+    let testdata = require('@/assets/loginMockData')
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        commit('setRoles', testdata.roles)
+        console.log('异步获取 usinfo 信息')
+        resolve(testdata.roles)
+      }, 500)
+    })
   }
 }
 

@@ -1,0 +1,78 @@
+  
+  {
+    "name": "admin",
+    "token": "rtVrM4PhiFK8PNopqWuSjsc1n02oKc3f",
+    "roles": [
+      {
+        "path": "/",
+        "component": "Layout",
+        "redirect": "/home",
+        "children": [
+          {
+            "name": "home",
+            "path": "home",
+            "component": "home/index",
+            "meta": {
+              "title": "首页",
+              "affix": true,
+              "icon": "House"
+            }
+          }
+        ]
+      },
+      {
+        "path": "/systeam",
+        "component": "Layout",
+        "redirect": "/systeam/index",
+        "children": [
+          {
+            "name": "systeam",
+            "path": "index",
+            "component": "systeam/index",
+            "meta": {
+              "title": "系统",
+              "icon": "Monitor"
+            }
+          }
+        ]
+      },
+      {
+        "name": "permission",
+        "path": "/permission",
+        "component": "Layout",
+        "alwaysShow": "true",
+        "meta": {
+          "title": "Permission",
+          "icon": "IceTea"
+        },
+        "children": [
+          {
+            "name": "permission-page1",
+            "path": "permission-page1",
+            "component": "permission/permission-page1",
+            "meta": {
+              "title": "页面1"
+            }
+          },
+          {
+            "name": "permission-page2",
+            "path": "permission-page2",
+            "component": "permission/permission-page2",
+            "meta": {
+              "title": "页面2"
+            }
+          }
+        ]
+      },
+      {
+        "path": "/external-link",
+        "component": "Layout",
+        "children": [
+          {
+            "path": "https://github.com/PanJiaChen/vue-element-admin",
+            "meta": { "title": "External Link", "icon": "link" }
+          }
+        ]
+      }
+    ]
+  }
