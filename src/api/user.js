@@ -11,3 +11,9 @@ export function login(userid, password) {
   })
 }
 
+export function getUserInfo() {
+  return request({
+    url: '/userAdmin/userInfo'
+  })
+}
+

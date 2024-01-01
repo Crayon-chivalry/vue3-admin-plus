@@ -20,6 +20,7 @@ router.beforeEach(async(to, from, next) => {
         next()
       } else {
         let roles = await store.dispatch('user/getInfo')
+        console.log(roles)
         roles.forEach(item => {
           item = makeASyncRoutes(item)
           router.addRoute(item)

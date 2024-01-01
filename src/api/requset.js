@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../store'
 import { ElLoading, ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-loading.css'
 import 'element-plus/theme-chalk/el-message.css'
@@ -9,6 +10,9 @@ export function request(config, loading = true) {
   const instance = axios.create({
     baseURL: 'http://127.0.0.1:3000',
     timeout: 5000, // 超时配置
+    headers: {
+      token: store.getters.token
+    }
   })
 
   // 添加请求拦截器
@@ -25,7 +29,8 @@ export function request(config, loading = true) {
   instance.interceptors.response.use(res => {
     // 响应数据处理
     loadingInstance?.close()
-    if(res.data.code === 500 || res.data.code === 0) {
+    console.log(res)
+    if(res.data.code === 401 || res.data.code === 0) {
       ElMessage({
         message: res.data.msg,
         type: 'error',
