@@ -24,11 +24,16 @@ const actions = {
     let _password = md5(form.password)
     let { data } = await login(form.userid, _password)
     let token = data.data
-    commit('setToken', '1111')
+    commit('setToken', token)
   },
   async getInfo({ commit }, form) {
     let { data } = await getUserInfo()
     console.log(data)
+  },
+  resetToken({ commit }) {
+    commit('setUserid', '')
+    commit('setToken', '')
+    commit('roles', [])
   }
 }
 
