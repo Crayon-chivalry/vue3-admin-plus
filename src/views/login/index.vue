@@ -48,7 +48,7 @@ function submit() {
     if (valid) {
       store.dispatch('user/login', form).then(() => {
         router.push('/')
-      }).catch(() => {})
+      })
     }
   })
 }

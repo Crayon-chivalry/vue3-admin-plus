@@ -30,6 +30,7 @@ export function request(config, loading = true) {
         message: res.data.msg,
         type: 'error',
       })
+      return Promise.reject(error);
     } else {
       return res
     }
@@ -40,6 +41,7 @@ export function request(config, loading = true) {
       message: '服务端异常',
       type: 'error',
     })
+    return Promise.reject(error);
   })
 
   return instance(config)
