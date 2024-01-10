@@ -14,15 +14,18 @@
 
     <el-row :gutter="15" class="mt-md">
       <el-col :span="18">
-        <sales-charts></sales-charts>
+        <sales-charts />
         <el-row :gutter="15" class="mt-md">
           <el-col :span="12">
-            <access-charts></access-charts>
+            <access-charts />
           </el-col>
           <el-col :span="12">
-            <turnover-charts></turnover-charts>
+            <turnover-charts />
           </el-col>
         </el-row>
+      </el-col>
+      <el-col :span="6">
+        <tools />
       </el-col>
     </el-row>
   </div>
@@ -32,6 +35,7 @@
 import SalesCharts from './components/SalesCharts'
 import AccessCharts from './components/AccessCharts'
 import TurnoverCharts from './components/TurnoverCharts'
+import Tools from './components/Tools.vue'
 
 let totalList = [
   { text: '今日销售额', img: require('@/assets/logo.png'), value: 865400 },

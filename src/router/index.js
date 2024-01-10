@@ -1,10 +1,18 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import Layout from '@/layout' // 临时
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/views/dashboard/index.vue')
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        name: 'dashboard',
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index.vue')
+      }
+    ]
   },
   {
     path: '/login',

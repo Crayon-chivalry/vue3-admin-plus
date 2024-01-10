@@ -2,7 +2,7 @@
   <div class="login">
     <div class="card">
       <div class="cover">
-        <img src="@/assets/base/login-cover.png" class="cover-icon" />
+        <img src="@/assets/image/login-cover.png" class="cover-icon" />
       </div>
 
       <div class="form">
