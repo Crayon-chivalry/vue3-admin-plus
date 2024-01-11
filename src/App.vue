@@ -25,4 +25,8 @@
   .mt-md {
     margin-top: 15px;
   }
+
+  .mr-sm {
+    margin-right: 10px;
+  }
 </style>

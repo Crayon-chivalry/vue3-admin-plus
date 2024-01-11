@@ -26,6 +26,7 @@
       </el-col>
       <el-col :span="6">
         <tools />
+        <message />
       </el-col>
     </el-row>
   </div>
@@ -36,6 +37,7 @@ import SalesCharts from './components/SalesCharts'
 import AccessCharts from './components/AccessCharts'
 import TurnoverCharts from './components/TurnoverCharts'
 import Tools from './components/Tools.vue'
+import Message from './components/Message.vue'
 
 let totalList = [
   { text: '今日销售额', img: require('@/assets/logo.png'), value: 865400 },
