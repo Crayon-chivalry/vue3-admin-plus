@@ -19,7 +19,6 @@ const route = useRoute()
 const store = useStore()
 
 const cachedViews = computed(() => {
-  console.log('cachedViews', store.getters.cachedViews)
   return store.getters.cachedViews
 })
 

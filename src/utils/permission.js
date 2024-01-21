@@ -20,11 +20,7 @@ router.beforeEach(async(to, from, next) => {
         next()
       } else {
         let roles = await store.dispatch('user/getInfo')
-        console.log(roles)
-        roles.forEach(item => {
-          item = makeASyncRoutes(item)
-          router.addRoute(item)
-        })
+        addRoute(roles)
         next({ ...to, replace: true })
       }
     }
@@ -41,6 +37,14 @@ router.afterEach(() => {
   // finish progress bar
   NProgress.done()
 })
+
+// 添加动态路由
+function addRoute(roles) {
+  roles.forEach(item => {
+    item = makeASyncRoutes(item)
+    router.addRoute(item)
+  })
+}
 
 // 重构异步路由结构
 function makeASyncRoutes(data) {

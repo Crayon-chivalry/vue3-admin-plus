@@ -39,6 +39,8 @@ import AppMain from "./components/AppMain.vue";
 }
 
 .main {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
   background-color: #f0f2f5;
 }
 </style>

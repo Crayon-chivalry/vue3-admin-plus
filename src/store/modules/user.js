@@ -26,9 +26,10 @@ const actions = {
     let token = data.data
     commit('setToken', token)
   },
-  async getInfo({ commit }, form) {
+  async getInfo({ commit }) {
     let { data } = await getUserInfo()
-    console.log(data)
+    commit('setRoles', data.data)
+    return data.data
   },
   resetToken({ commit }) {
     commit('setUserid', '')

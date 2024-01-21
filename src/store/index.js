@@ -23,7 +23,7 @@ export default createStore({
     createPersistedState({
       storage: window.sessionStorage,
       key: "store",
-      // plugins: [modules.user]
+      paths: ['user.token']
     })
   ]
 })

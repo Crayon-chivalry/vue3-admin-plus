@@ -1,14 +1,14 @@
 <template>
   <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
     <el-menu-item class="menu-item" :index="resolvePath(onlyOneChild.path)" v-if="onlyOneChild.meta" @click="handleLink(onlyOneChild)">
-      <el-icon><Plus /></el-icon>
+      <svg-icon :icon="onlyOneChild.meta.icon" class="side-icon"></svg-icon>
       <template #title>{{ onlyOneChild.meta.title }}</template>
     </el-menu-item>
   </template>
 
   <el-sub-menu v-else :index="resolvePath(item.path)">
     <template #title>
-      <el-icon><location /></el-icon>
+      <svg-icon :icon="item.meta.icon" class="side-icon"></svg-icon>
       <span>{{ item.meta.title }}</span>
     </template>
     <sidebar-item 
@@ -86,4 +86,10 @@ function hasOneShowingChild(children = [], parent) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.side-icon {
+  margin-right: 6px;
+  width: 20px;
+  height: 20px;
+}
+</style>
