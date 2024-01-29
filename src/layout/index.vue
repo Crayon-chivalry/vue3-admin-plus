@@ -7,7 +7,7 @@
     <el-container>
       <el-header class="header">
         <navbar/>
-        <tags-view/>
+        <!-- <tags-view/> -->
       </el-header>
 
       <el-main class="main">
