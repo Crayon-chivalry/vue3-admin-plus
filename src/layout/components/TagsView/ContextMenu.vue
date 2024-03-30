@@ -26,6 +26,7 @@ const store = useStore()
 const router = useRouter()
 const route = useRoute()
 
+// 是否显示关闭
 const isAffix = (_tag) => {
   return _tag.meta && _tag.meta.affix
 }

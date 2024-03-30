@@ -7,7 +7,7 @@
     <el-container>
       <el-header class="header">
         <navbar/>
-        <!-- <tags-view/> -->
+        <tags-view/>
       </el-header>
 
       <el-main class="main">
@@ -39,7 +39,7 @@ import AppMain from "./components/AppMain.vue";
 }
 
 .main {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 84px);
   overflow-y: auto;
   background-color: #f0f2f5;
 }

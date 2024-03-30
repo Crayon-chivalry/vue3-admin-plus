@@ -6,16 +6,15 @@
       v-for="(item, index) in store.getters.visitedViews" 
       :key="item.path"
       :to="item.path"
-      @contextmenu.prevent.native="openMenu(item, index ,$event)"
+      @contextmenu.prevent="openMenu(item, index ,$event)"
     >
       {{ item.meta.title }}
       <span class="close-icon" v-if="!item.meta.affix" @click.prevent.stop="onClose(item, index)">
-        <!-- <el-icon size="9" :color="activeRoute == item.path ? '#fff': 'gray'">
-          <Close />
-        </el-icon> -->
+        <svg-icon icon="close" :className="activeRoute == item.path ? 'active-close' : ''"></svg-icon>
       </span>
     </router-link>
 
+    <!-- 右键菜单 -->
     <context-menu 
       :style="menuStyle" 
       :index="selectIndex"
@@ -69,6 +68,14 @@ onMounted(() => {
   initTags()
 })
 
+// 初始化
+const initTags = () => {
+  const affixTags = filterAffixTags(store.getters.roles)
+  affixTags.forEach(item => {
+    store.commit('tagsView/addVisitedViews', {...item})
+  })
+}
+
 // 查找 Affix 固钉 路由
 const filterAffixTags = (routes, basePath = '/') => {
   let tags = []
@@ -90,14 +97,6 @@ const filterAffixTags = (routes, basePath = '/') => {
     }
   })
   return tags
-}
-
-const initTags = () => {
-  const affixTags = filterAffixTags(store.getters.roles)
-  affixTags.forEach(item => {
-    store.commit('addVisitedViews', {...item})
-  })
-  console.log('affixTags',affixTags)
 }
 
 const openMenu = (item, index, e) => {
@@ -127,6 +126,7 @@ const closeMenu = () => {
 .tags {
   height: 34px;
   display: flex;
+  box-sizing: border-box;
   background-color: #fff;
   border-bottom: 1px solid #d8dce5;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
@@ -166,5 +166,9 @@ const closeMenu = () => {
 
 .close-icon:hover {
   background-color: #a8abb2;
+}
+
+.active-close {
+  color: #fff;
 }
 </style>

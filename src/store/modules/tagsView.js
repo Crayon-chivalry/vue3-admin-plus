@@ -6,6 +6,7 @@ const state = {
 const mutations = {
   // 添加标签栏
   addVisitedViews(state, content) {
+    console.log('addVisitedViews', state)
     const tag = state.visitedViews.find(item => {
       return item.path == content.path
     })
