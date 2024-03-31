@@ -6,7 +6,6 @@ const state = {
 const mutations = {
   // 添加标签栏
   addVisitedViews(state, content) {
-    console.log('addVisitedViews', state)
     const tag = state.visitedViews.find(item => {
       return item.path == content.path
     })
@@ -19,7 +18,7 @@ const mutations = {
     }
     if(content.type === 'other') {
       state.visitedViews = state.visitedViews.filter((item, index) => {
-        return visitedViews === content.index || (item.meta && item.meta.affix)
+        return index === content.index || (item.meta && item.meta.affix)
       })
     }
     if(content.type === 'all') {
@@ -37,7 +36,7 @@ const mutations = {
   },
   // 移除缓存视图
   removeCachedViews(state, view) {
-    let name = state.tagsViewList[view.index].name
+    let name = state.visitedViews[view.index].name
     let fIndex = state.cachedViews.findIndex(item => item == name)
     if(fIndex != -1) {
       state.cachedViews.splice(fIndex, 1)

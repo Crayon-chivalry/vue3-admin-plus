@@ -1,7 +1,13 @@
 <template>
   <template v-if="hasOneShowingChild(item.children, item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
     <el-menu-item class="menu-item" :index="resolvePath(onlyOneChild.path)" v-if="onlyOneChild.meta" @click="handleLink(onlyOneChild)">
-      <svg-icon :icon="onlyOneChild.meta.icon" class="side-icon"></svg-icon>
+      <svg-icon 
+        :icon="onlyOneChild.meta.icon" 
+        class="side-icon"
+        :class="{'active-icon': route.path == resolvePath(onlyOneChild.path)}"
+        v-if="onlyOneChild.meta.icon"
+      >
+      </svg-icon>
       <template #title>{{ onlyOneChild.meta.title }}</template>
     </el-menu-item>
   </template>
@@ -23,7 +29,7 @@
 
 <script setup>
 import { defineProps, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { resolve } from "@/utils/path"
 import { isExternal } from '@/utils/validate'
 
@@ -39,6 +45,7 @@ const props = defineProps({
 })
 
 const router = useRouter()
+const route = useRoute()
 let onlyOneChild = ref(null)
 
 function handleLink(e) {
@@ -91,5 +98,9 @@ function hasOneShowingChild(children = [], parent) {
   margin-right: 6px;
   width: 20px;
   height: 20px;
+}
+
+.active-icon {
+  color: var(--main-color);
 }
 </style>

@@ -38,27 +38,27 @@ const onRefreshClick = () => {
 
 // 关闭
 const onClose = () => {
-  let tagsViewList = store.state.tagsViewList
-  let tag = tagsViewList[props.index]
-  store.commit('removeVisitedViews', { type: 'index', index: props.index })
+  let visitedViews = store.getters.visitedViews
+  let tag = visitedViews[props.index]
+  store.commit('tagsView/removeVisitedViews', { type: 'index', index: props.index })
   if(tag.path === route.path) {
-    router.push(tagsViewList[props.index - 1].path)
+    router.push(visitedViews[props.index - 1].path)
   }
 }
 
 // 关闭其他
 const onCloseOther = () => {
-  let tagsViewList = store.state.tagsViewList
-  let tag = tagsViewList[props.index]
-  store.commit('removeVisitedViews', { type: 'other', index: props.index })
+  let visitedViews = store.getters.visitedViews
+  let tag = visitedViews[props.index]
+  store.commit('tagsView/removeVisitedViews', { type: 'other', index: props.index })
   router.push(tag.path)
 }
 
 // 关闭所有
 const onCloseAll = () => {
-  store.commit('removeVisitedViews', { type: 'all' })
-  let tagsViewList = store.state.tagsViewList
-  router.push(tagsViewList[tagsViewList.length - 1].path)
+  store.commit('tagsView/removeVisitedViews', { type: 'all' })
+  let visitedViews = store.getters.visitedViews
+  router.push(visitedViews[visitedViews.length - 1].path)
 }
 </script>
 

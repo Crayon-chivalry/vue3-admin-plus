@@ -109,11 +109,11 @@ const openMenu = (item, index, e) => {
 }
 
 const onClose = (tag, index) => {
-  let tagsViewList = store.state.tagsViewList
-  store.commit('removeCachedViews', { type: 'index', index })
-  store.commit('removeVisitedViews', { type: 'index', index })
+  let visitedViews = store.getters.visitedViews
+  store.commit('tagsView/removeCachedViews', { type: 'index', index })
+  store.commit('tagsView/removeVisitedViews', { type: 'index', index })
   if(tag.path === route.path) {
-    router.push(tagsViewList[index - 1].path)
+    router.push(visitedViews[index - 1].path)
   }
 }
 
@@ -151,8 +151,8 @@ const closeMenu = () => {
 
 .tags-active {
   color: #fff;
-  border-color: #409eff;
-  background-color: #409eff;
+  border-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .close-icon {
