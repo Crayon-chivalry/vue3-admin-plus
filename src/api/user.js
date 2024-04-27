@@ -1,4 +1,4 @@
-import { request } from './requset'
+import { request } from './request'
 
 export function login(userid, password) {
   return request({
