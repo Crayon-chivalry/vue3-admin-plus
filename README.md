@@ -1,4 +1,4 @@
-# vue3-admin-plus
+# vue3-admin-plus(暂废弃)
 
 ## Project setup
 ```
